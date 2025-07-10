@@ -1,5 +1,5 @@
 ---
-title: Complete Guide: Minimal Directory Website with Eleventy, HTMX, and Leaflet
+title: Minimal Directory Website with Eleventy, HTMX, and Leaflet
 date: 2023-10-27
 layout: post.njk
 tags: [post]
