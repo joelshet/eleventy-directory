@@ -1,0 +1,7 @@
+body { font-family: sans-serif; line-height: 1.6; margin: 0; padding: 2rem; }
+nav a { margin-right: 1rem; }
+.directory-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+.card { border: 1px solid #ccc; padding: 1rem; border-radius: 8px; }
+.card.highlight { border-color: royalblue; border-width: 2px; }
+#map { height: 400px; margin: 2rem 0; }
+input[type="search"] { width: 100%; padding: 0.8rem; font-size: 1.2rem; margin-bottom: 1rem; } 
