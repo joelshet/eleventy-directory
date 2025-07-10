@@ -104,7 +104,7 @@ Let's build the static foundation.
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>{{ title }}</title>
+      <title>{% raw %}{{ title }}{% endraw %}</title>
       <link rel="stylesheet" href="/css/style.css">
       <!-- Leaflet CSS -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
@@ -117,7 +117,7 @@ Let's build the static foundation.
         </nav>
       </header>
       <main>
-        {{ content | safe }}
+        {% raw %}{{ content | safe }}{% endraw %}
       </main>
       <!-- HTMX -->
       <script src="https://unpkg.com/htmx.org@1.9.10"></script>
@@ -194,13 +194,13 @@ Let's build the static foundation.
 
 4.  **Create a Reusable Card Partial (`src/_includes/item-card.njk`):**
     ```html
-    <div class="card" id="item-{{ item.id }}" data-lat="{{ item.latitude }}" data-lon="{{ item.longitude }}">
-      {% if item.image_url %}
-        <img src="{{ item.image_url }}" alt="{{ item.name }}" style="width:100%; height:auto;">
-      {% endif %}
-      <h2>{{ item.name }}</h2>
-      <p>{{ item.description }}</p>
-      <a href="{{ item.website_url }}" target="_blank" rel="noopener noreferrer">Visit Website</a>
+    <div class="card" id="item-{% raw %}{{ item.id }}{% endraw %}" data-lat="{% raw %}{{ item.latitude }}{% endraw %}" data-lon="{% raw %}{{ item.longitude }}{% endraw %}">
+      {% raw %}{% if item.image_url %}{% endraw %}
+        <img src="{% raw %}{{ item.image_url }}{% endraw %}" alt="{% raw %}{{ item.name }}{% endraw %}" style="width:100%; height:auto;">
+      {% raw %}{% endif %}{% endraw %}
+      <h2>{% raw %}{{ item.name }}{% endraw %}</h2>
+      <p>{% raw %}{{ item.description }}{% endraw %}</p>
+      <a href="{% raw %}{{ item.website_url }}{% endraw %}" target="_blank" rel="noopener noreferrer">Visit Website</a>
     </div>
     ```
 
@@ -225,18 +225,18 @@ Let's build the static foundation.
     />
 
     <div id="directory-results" class="directory-grid">
-      {% for item in directory %}
-        {% include "item-card.njk" %}
-      {% endfor %}
+      {% raw %}{% for item in directory %}{% endraw %}
+        {% raw %}{% include "item-card.njk" %}{% endraw %}
+      {% raw %}{% endfor %}{% endraw %}
     </div>
 
-    {# Pass location data to our client-side map script #}
+    {% raw %}{# Pass location data to our client-side map script #}{% endraw %}
     <script>
-      const locations = {{ directory | dump | safe }};
+      const locations = {% raw %}{{ directory | dump | safe }}{% endraw %};
     </script>
     <script src="/js/map.js" defer></script>
 
-    {# Keyboard Shortcut Script #}
+    {% raw %}{# Keyboard Shortcut Script #}{% endraw %}
     <script>
       hotkeys('/', function(event) {
         event.preventDefault();
@@ -254,9 +254,9 @@ Let's build the static foundation.
     ---
     layout: layout.njk
     ---
-    <h1>{{ title }}</h1>
-    <p>Published on {{ page.date.toDateString() }}</p>
-    {{ content | safe }}
+    <h1>{% raw %}{{ title }}{% endraw %}</h1>
+    <p>Published on {% raw %}{{ page.date.toDateString() }}{% endraw %}</p>
+    {% raw %}{{ content | safe }}{% endraw %}
     ```
 
 2.  **Create a Sample Post (`src/blog/my-first-post.md`):**
@@ -280,12 +280,12 @@ Let's build the static foundation.
     ---
     <h1>The Blog</h1>
     <ul>
-      {%- for post in collections.post | reverse -%}
+      {% raw %}{%- for post in collections.post | reverse -%}{% endraw %}
         <li>
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-          - <span>{{ post.date.toDateString() }}</span>
+          <a href="{% raw %}{{ post.url }}{% endraw %}">{% raw %}{{ post.data.title }}{% endraw %}</a>
+          - <span>{% raw %}{{ post.date.toDateString() }}{% endraw %}</span>
         </li>
-      {%- endfor -%}
+      {% raw %}{%- endfor -%}{% endraw %}
     </ul>
     ```
     *Note: We used `tags: [post]` in our markdown file. This automatically creates `collections.post`.*
