@@ -1,3 +1,10 @@
+---
+title: Complete Guide: Minimal Directory Website with Eleventy, HTMX, and Leaflet
+date: 2023-10-27
+layout: post.njk
+tags: [post]
+---
+
 # Complete Guide: Minimal Directory Website with Eleventy, HTMX, and Leaflet
 
 This tutorial will walk you through creating a minimal, production-ready directory website from scratch using Eleventy, HTMX, and Leaflet.js, all powered by a Supabase backend.
