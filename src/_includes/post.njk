@@ -1,6 +1,8 @@
 ---
 layout: layout.njk
 ---
-<h1>{{ title }}</h1>
+
+<section class="blog">
 <p>Published on {{ page.date.toDateString() }}</p>
 {{ content | safe }} 
+</section>

@@ -16,7 +16,7 @@ exports.handler = async function(event) {
   const html = items.map(item => `
     <div class="card" id="item-${item.id}" data-lat="${item.latitude}" data-lon="${item.longitude}">
       ${item.image_url ? `<img src="${item.image_url}" alt="${item.name}" style="width:100%; height:auto;">` : ''}
-      <h2>${item.name}</h2>
+      <h3>${item.name}</h3>
       <p>${item.description || ''}</p>
       <a href="${item.website_url}" target="_blank" rel="noopener noreferrer">Visit Website</a>
     </div>

@@ -3,11 +3,13 @@ title: My Awesome Directory
 layout: layout.njk
 ---
 
-
-
+<div>
+<h2>Map</h2>
 <div id="map"></div>
+</div>
 
-<div id="search">
+<div>
+<h2>Search</h2>
 <input
   type="search"
   name="q"
@@ -18,10 +20,13 @@ layout: layout.njk
 />
 </div>
 
+<div>
+<h2>Items</h2>
 <div id="directory-results" class="directory-grid">
   {% for item in directory %}
     {% include "item-card.njk" %}
   {% endfor %}
+</div>
 </div>
 
 {# Pass location data to our client-side map script #}

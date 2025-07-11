@@ -40,7 +40,7 @@ if (typeof locations !== 'undefined' && locations.length > 0) {
         id: card.id.replace('item-',''),
         latitude: card.dataset.lat,
         longitude: card.dataset.lon,
-        name: card.querySelector('h2').innerText // A bit hacky, but works for the demo
+        name: card.querySelector('h2').innerText
     }));
     renderMarkers(newItems);
   });
