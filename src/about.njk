@@ -1,0 +1,34 @@
+---
+title: Coolest directory site
+layout: layout.njk
+---
+
+<div class="cool">
+<h1><span class="accent">About </span>The Coolest Directory Site on the Internet</h1>
+<p>Click stuff and scroll and things and be going wow!</p>
+</div>
+
+
+
+<section>
+<h2><span class="accent">@Directory</span>.Story</h2>
+<p>
+This site exists to make a statement about minimal tech stacks.
+</p>
+</section>
+
+<div class="cool">
+<h2><span class="accent">@Directory</span>.List</h2>
+</div>
+<div class="index-grid">
+{% for item in directory %}
+<div>
+    <a href="/item/{{ item.id }}/" style="text-decoration: none; color: var(--text-primary); font-weight: var(--font-weight-bold);">{{ item.name }}</a> - {{ item.description }}
+    </div>
+  {% endfor %}
+</div>
+
+{# Pass location data to our client-side map script #}
+<script>
+  const locations = {{ directory | dump | safe }};
+</script>

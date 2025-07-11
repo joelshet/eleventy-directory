@@ -3,18 +3,40 @@ title: Coolest directory site
 layout: layout.njk
 ---
 
-<div class="cool">
-<h1>The Coolest <span class="accent">Directory</span> Site on the Internet</h1>
+<div class="cool" style="position:relative;">
+<div class="page-holder" style="display:grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; position: absolute; top: 3rem; left: -1rem; z-index: 100;">
+    <section style="transform: rotate(-9deg); background: var(--accent-primary); border-radius: var(--border-radius-medium); padding: 0.25rem 0.5rem; box-shadow: var(--box-shadow-small);">
+      <div>
+        <span style="font-size: 0.5rem; font-weight: var(--font-weight-bold);"><span class="accent">@Directory</span>.Site</span>
+        </div>
+    <div class="page" style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0.25rem; background-color: var(--accent-primary);">
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+      <div style="width:100%; height:1rem; border:1px solid var(--text-primary);"></div>
+
+    </div>
+  </section>
+  </div>
+<h1>The Coolest <span class="accent">Directory</span> Site <br>on the Internet</h1>
 <p>Click stuff and scroll and things and be going wow!</p>
 </div>
 
 <section>
-<h2><span class="accent">Directory</span>.Map</h2>
+<h2><span class="accent">@Directory</span>.Map</h2>
 <div id="map"></div>
 </section>
 
 <section>
-<h2><span class="accent">Directory</span>.Search</h2>
+<h2><span class="accent">@Directory</span>.Search</h2>
 <input
   type="search"
   name="q"
@@ -26,7 +48,7 @@ layout: layout.njk
 </section>
 
 <section>
-<h2><span class="accent">Directory</span>.Items</h2>
+<h2><span class="accent">@Directory</span>.Items</h2>
 <div id="directory-results" class="directory-grid">
   {% for item in directory %}
     {% include "item-card.njk" %}
@@ -35,7 +57,7 @@ layout: layout.njk
 </section>
 
 <div class="cool">
-<h2><span class="accent">Directory</span>.List</h2>
+<h2><span class="accent">@Directory</span>.List</h2>
 </div>
 <div class="index-grid">
 {% for item in directory %}

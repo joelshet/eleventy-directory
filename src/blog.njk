@@ -3,12 +3,17 @@ title: The Blog
 layout: layout.njk
 ---
 
-<h1>The Blog</h1>
-<ul>
-  {%- for post in collections.post | reverse -%}
-    <li>
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      - <span>{{ post.date.toDateString() }}</span>
-    </li>
-  {%- endfor -%}
-</ul> 
+<div class="cool">
+<h1>The Coolest Directory Site <span class="accent">Blog</span> on the Internet</h1>
+<p>Read all about it. Here. On the website published log.</p>
+</div>
+
+<section>
+  <h2><span class="accent">@Blog</span>.Posts</h2>
+{%- for post in collections.post | reverse -%}
+  <a href="{{ post.url }}" class="card-link">
+      <h3>{{ post.data.title }}</h3>
+      <time datetime="{{ post.date.toDateString() }}">{{ post.date.toDateString() }}</time>
+    </a>
+    {%- endfor -%}
+  </section>
