@@ -1,0 +1,78 @@
+---
+pagination:
+  data: directory
+  size: 1
+  alias: item
+permalink: "/item/{{ item.id }}/"
+layout: layout.njk
+title: "{{ item.name }}"
+---
+
+<div class="cool">
+  <h1>{{ item.name }}</h1>
+  {% if item.description %}
+    <p>{{ item.description }}</p>
+  {% endif %}
+</div>
+
+<section>
+  <h2>Details</h2>
+  
+  {% if item.image_url %}
+    <div class="item-image">
+      <img src="{{ item.image_url }}" alt="{{ item.name }}" style="width: 100%; max-width: 600px; height: auto; border-radius: var(--border-radius-medium); border: 2px solid var(--text-primary); box-shadow: var(--box-shadow);">
+    </div>
+  {% endif %}
+
+  <div class="item-details">
+    {% if item.description %}
+      <h3>About</h3>
+      <p>{{ item.description }}</p>
+    {% endif %}
+
+    {% if item.website_url %}
+      <h3>Website</h3>
+      <a href="{{ item.website_url }}" target="_blank" rel="noopener noreferrer" class="button-primary">Visit Website</a>
+    {% endif %}
+
+    {% if item.latitude and item.longitude %}
+      <h3>Location</h3>
+      <div id="item-map" style="height: 300px; border: 2px solid var(--text-primary); border-radius: var(--border-radius-medium); box-shadow: var(--box-shadow);"></div>
+    {% endif %}
+  </div>
+</section>
+
+<section>
+  <h2>Navigation</h2>
+  <a href="/" class="button-primary">← Back to Directory</a>
+</section>
+
+{% if item.latitude and item.longitude %}
+<script>
+  // Wait for both DOM and Leaflet to be ready
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if Leaflet is loaded, if not wait for it
+    function initializeMap() {
+      if (typeof L !== 'undefined') {
+        // Initialize map for individual item
+        const itemMap = L.map('item-map').setView([{{ item.latitude }}, {{ item.longitude }}], 15);
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(itemMap);
+        
+        // Add marker for this item
+        L.marker([{{ item.latitude }}, {{ item.longitude }}])
+          .addTo(itemMap)
+          .bindPopup('<b>{{ item.name }}</b><br>{{ item.description }}')
+          .openPopup();
+      } else {
+        // Leaflet not loaded yet, wait a bit and try again
+        setTimeout(initializeMap, 100);
+      }
+    }
+    
+    initializeMap();
+  });
+</script>
+{% endif %} 

@@ -40,7 +40,7 @@ layout: layout.njk
 <div class="index-grid">
 {% for item in directory %}
 <div>
-    {{ item.name }} - {{ item.description }}
+    <a href="/item/{{ item.id }}/" style="text-decoration: none; color: var(--text-primary); font-weight: var(--font-weight-bold);">{{ item.name }}</a> - {{ item.description }}
     </div>
   {% endfor %}
 </div>
