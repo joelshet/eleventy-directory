@@ -11,7 +11,7 @@
 <body>
   <header>
     <nav>
-      <a href="/">Home</a>
+      <a href="/"><h1>Directory</h1></a>
       <a href="/blog/">Blog</a>
     </nav>
   </header>
@@ -24,5 +24,16 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <!-- Hotkeys.js -->
   <script src="https://unpkg.com/hotkeys-js/dist/hotkeys.min.js"></script>
+  
+  <!-- Keyboard Shortcut Script -->
+  <script>
+    // Only set up hotkeys if search input exists
+    if (document.querySelector('input[name="q"]')) {
+      hotkeys('/', function(event) {
+        event.preventDefault();
+        document.querySelector('input[name="q"]').focus();
+      });
+    }
+  </script>
 </body>
 </html> 

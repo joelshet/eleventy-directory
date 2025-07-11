@@ -3,10 +3,11 @@ title: My Awesome Directory
 layout: layout.njk
 ---
 
-<h1>My Awesome Directory</h1>
+
 
 <div id="map"></div>
 
+<div id="search">
 <input
   type="search"
   name="q"
@@ -15,6 +16,7 @@ layout: layout.njk
   hx-trigger="keyup changed delay:300ms"
   hx-target="#directory-results"
 />
+</div>
 
 <div id="directory-results" class="directory-grid">
   {% for item in directory %}
@@ -26,12 +28,4 @@ layout: layout.njk
 <script>
   const locations = {{ directory | dump | safe }};
 </script>
-<script src="/js/map.js" defer></script>
-
-{# Keyboard Shortcut Script #}
-<script>
-  hotkeys('/', function(event) {
-    event.preventDefault();
-    document.querySelector('input[name="q"]').focus();
-  });
-</script> 
+<script src="/js/map.js" defer></script> 
