@@ -49,6 +49,8 @@ if (typeof locations !== 'undefined' && locations.length > 0) {
   document.getElementById('directory-results').addEventListener('click', (e) => {
       const card = e.target.closest('.card');
       if (card) {
+          const itemId = card.id.replace('item-','');
+          highlightCard(itemId);
           map.flyTo([card.dataset.lat, card.dataset.lon], 14);
       }
   });
