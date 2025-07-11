@@ -1,15 +1,20 @@
 ---
-title: My Awesome Directory
+title: Coolest directory site
 layout: layout.njk
 ---
 
-<div>
-<h2>Map</h2>
-<div id="map"></div>
+<div class="cool">
+<h1>The Coolest <span class="accent">Directory</span> Site on the Internet</h1>
+<p>Click stuff and scroll and things and be going wow!</p>
 </div>
 
-<div>
-<h2>Search</h2>
+<section>
+<h2><span class="accent">Directory</span>.Map</h2>
+<div id="map"></div>
+</section>
+
+<section>
+<h2><span class="accent">Directory</span>.Search</h2>
 <input
   type="search"
   name="q"
@@ -18,15 +23,22 @@ layout: layout.njk
   hx-trigger="keyup changed delay:300ms"
   hx-target="#directory-results"
 />
-</div>
 
-<div>
-<h2>Items</h2>
+<h2><span class="accent">Directory</span>.Items</h2>
 <div id="directory-results" class="directory-grid">
   {% for item in directory %}
     {% include "item-card.njk" %}
   {% endfor %}
 </div>
+</section>
+
+<h2>Directory</span>.Index</h2>
+<div class="index-grid">
+{% for item in directory %}
+<div>
+    {{ item.name }} - {{ item.description }}
+    </div>
+  {% endfor %}
 </div>
 
 {# Pass location data to our client-side map script #}

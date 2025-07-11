@@ -9,11 +9,37 @@ if (typeof locations !== 'undefined' && locations.length > 0) {
   // Create a layer group to hold markers
   const markerGroup = L.layerGroup().addTo(map);
 
+  // Create custom red marker icon
+  const redIcon = L.divIcon({
+    className: 'custom-red-marker',
+    html: `<div style="
+      width: 35px;
+      height: 35px;
+      background-color: rgb(254 74 96);
+      border: 2px solid white;
+      border-radius: 50% 50% 50% 0%;
+      transform: rotate(-45deg);
+      position: relative;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    "><div style="
+      width: 12px;
+      height: 12px;
+      background-color: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 12px;
+      left: 12px;
+    "></div></div>`,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34]
+  });
+
   function renderMarkers(items) {
     markerGroup.clearLayers(); // Clear old markers
     items.forEach(item => {
       if (item.latitude && item.longitude) {
-        const marker = L.marker([item.latitude, item.longitude]);
+        const marker = L.marker([item.latitude, item.longitude], { icon: redIcon });
         marker.bindPopup(`<b>${item.name}</b>`);
         marker.on('click', () => highlightCard(item.id));
         marker.addTo(markerGroup);
