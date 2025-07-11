@@ -40,7 +40,7 @@ body {
 }
 
 main {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -50,11 +50,14 @@ main > div {
 }
 
 header {
-    border-bottom: 4px solid var(--text-primary);
+    border-bottom: 2px solid var(--text-primary);
+    padding-bottom: 0.5rem;
 }
 
 footer {
     border-top: 4px solid var(--text-primary);
+    padding-top: 0.5rem;
+    text-align: center;
 }
 
 section.blog {
@@ -68,14 +71,16 @@ section.blog {
 }
 
 nav {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-nav a { 
+nav a,
+nav a h3,
+footer { 
     text-decoration: none; 
     color: var(--text-primary); 
     font-weight: var(--font-weight-bold);
@@ -92,6 +97,10 @@ h1, h2, h3 {
 h1 { font-size: var(--h1-font-size); }
 h2 { font-size: var(--h2-font-size); }
 h3 { font-size: var(--h3-font-size); }
+
+.accent {
+    color: var(--decorative-red);
+}
 
 .button-primary {
     background-color: var(--accent-primary);
