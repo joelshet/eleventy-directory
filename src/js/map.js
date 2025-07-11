@@ -36,12 +36,22 @@ if (typeof locations !== 'undefined' && locations.length > 0) {
   // Listen for HTMX finishing a request to update the map
   document.body.addEventListener('htmx:afterSwap', function(evt) {
     // We need to get the new items from the DOM, as 'locations' is stale
-    const newItems = Array.from(document.querySelectorAll('.card')).map(card => ({
+    const cards = document.querySelectorAll('.card');
+    
+    let newItems;
+    if (cards.length === 0) {
+      // No cards found (e.g., search reset or no results) - fall back to original locations
+      newItems = locations;
+    } else {
+      // Parse items from DOM
+      newItems = Array.from(cards).map(card => ({
         id: card.id.replace('item-',''),
         latitude: card.dataset.lat,
         longitude: card.dataset.lon,
-        name: card.querySelector('h2').innerText
-    }));
+        name: card.querySelector('h2, h3').innerText
+      }));
+    }
+    
     renderMarkers(newItems);
   });
 
