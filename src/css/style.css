@@ -206,7 +206,7 @@ input[type="search"]:focus {
     gap: 1rem; }
 
 #map { 
-    height: 50vh; 
+    height: 30vh; 
     border: 2px solid var(--text-primary); 
     border-radius: var(--border-radius-small);
     box-shadow: var(--box-shadow-small);
